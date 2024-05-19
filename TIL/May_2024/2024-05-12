@@ -1,0 +1,79 @@
+# 2024-05-12
+    모델, 접근권한, static
+
+## [ 모델 ]
+    
+### DTO 클래스
+
+계층간 데이터 교환을 하기 위해 사용되는 객체
+
+로직은 가지지 않은 순수한 데이터 객체임
+
+`getter/setter` 메서드만을 가진 클래스
+
+엔티티를 DTO 형태로 변환한 후에 Service 나 Controller 로 보냄
+
+### [ VO 클래스 ]
+
+Read-Only `getter` 메서드만 가지고 있음. 수정이 불가능
+
+데이터베이스의 레코드에 대응하는 프로그램적 개념
+
+### [ DAO 클래스 ]
+
+DB 의 data 에 접근하기 위한 객체
+
+실제 DB 에 접근해 CRUD 작업을 하는 객체
+
+### [ Utility 클래스 ]
+
+Utility, Helper, Facade
+
+반복적으로 사용해야 될 동작을 별도의 클래스로 만들어 놓고 필요할 때 사용하는 클래스
+
+필요할 때 만들어서 사용
+
+java.util 패키지에 이러한 클래스들이 많이 있음
+
+![240512_1](https://github.com/ikseong00/TIL/assets/127182222/1e10e6bc-bca6-40bb-934d-43a6d2043a87)
+
+
+    
+## [ 접근권한 ]
+    
+![240512_2](https://github.com/ikseong00/TIL/assets/127182222/df7544fc-4c60-493a-af6d-9ac2c43bce42)
+
+- public : 모든 클래스에서 접근 가능
+- private : 자기 자신 이외에 모든 패키지에서 접근 불가
+- protected : 상속 관계에서 하위클래스에서 상위 클래스에 접근 가능
+- default : 동일한 패키지에서만 접근 가능
+- 
+## [ static ]
+    
+`public static void main(String[] args) {}`
+
+static 키워드가 붙어있는 멤버들은 정해진 메모리 위치( static-zone ) 에 처음에 로딩됨.
+
+- 클래스를 사용하는 시점에 딱 한번 메모리에 로딩됨
+- main() 메소드는 static 키워드가 붙어있으므로 메모리에 자동으로 로딩됨.
+
+JVM 이 static-zone 에서 main() 메서드를 호출함.
+
+호출된 메소드를 Call Stack Frame Area( Stack Area ) 에 넣고 동작을 시작함.
+
+![240512_3](https://github.com/ikseong00/TIL/assets/127182222/be4f2254-701b-42c9-9007-ba626121873d)
+
+none-static 메서드에 접근하려면, 객체를 생성 후, 메모리에 로딩시켜야 함, 그렇지 않으면 오류가 생김
+
+클래스의 모든 멤버가 static 인 경우에는, 그 클래스의 객체를 생성할 수 없음
+
+ex) Math, System
+
+객체 생성을 제한하고 사용시키려 할 때 이용 가능.
+    
+
+### 추가로 하면 좋을 것
+
+---
+
+- JVM, Memory Model
